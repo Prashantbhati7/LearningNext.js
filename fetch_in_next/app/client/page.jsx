@@ -14,9 +14,13 @@ const page = () => {
         
           const res = await fetch(`https://api.genderize.io/?name=${name}`)
           const resjson= await res.json();
-         
+          const promise = new Promise((resolve,reject)=>{
+            setTimeout(() => {
+              resolve(56);
+            }, 4000);
+          })
+           await promise;
           setdata(resjson);
-
           setloading(false);
        }
        fetchdata();
@@ -25,8 +29,7 @@ const page = () => {
   
  
   return (
-    // loading? <div className="text-white text-center text-5xl"> Loading... </div>:
-    !loading&& 
+    loading? <div className="text-white text-center text-5xl"> Loading... </div>:
     <div className="body text-4xl text-center text-white">
         <div className="container">
             <div className="box ">
