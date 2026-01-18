@@ -7,6 +7,6 @@ import { revalidatePath } from "next/cache";
 export const savetoDb= async(formdata)=>{
     const {name,state,city,established}  = Object.fromEntries(formdata.entries());
     await db.execute(`insert into hospitaldetails values (?,?,?,?)`,[name,city,state,established])
-    revalidatePath('/hospitaldata/server')    // refresh cache (clear old cache and create new )
+    revalidatePath('/hospitaldata/server')    // refresh cache (clear old cache and create new )  // for static page its called on demand revalidation 
    // return {success:true,message:'successfully saved to database '};
 }
